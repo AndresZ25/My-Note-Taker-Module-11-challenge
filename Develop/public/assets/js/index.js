@@ -16,17 +16,17 @@ if (window.location.pathname === '/notes') {
   noteList = document.querySelectorAll('.list-container .list-group');
 }
 
-// Show an element
+
 const show = (elem) => {
   elem.style.display = 'inline';
 };
 
-// Hide an element
+
 const hide = (elem) => {
   elem.style.display = 'none';
 };
 
-// activeNote is used to keep track of the note in the textarea
+
 let activeNote = {};
 
 const getNotes = () =>
@@ -76,7 +76,7 @@ const renderActiveNote = () => {
 };
 
 
-//Save
+
 const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
@@ -96,7 +96,7 @@ const handleNoteSave = () => {
 
 
 
-// Delete 
+
 const handleNoteDelete = (e) => {
   e.stopPropagation();
 
@@ -130,9 +130,6 @@ const handleNewNoteView = () => {
 };
 
 
-
-
-// Renders the appropriate buttons based on the state of the form
 const handleRenderBtns = () => {
   show(clearBtn);
   if (!noteTitle.value.trim() && !noteText.value.trim()) {
@@ -147,7 +144,6 @@ const handleRenderBtns = () => {
 
 
 
-// Render the list of note titles
 const renderNoteList = async (notes) => {
   let jsonNotes = await notes.json();
   if (window.location.pathname === '/notes') {
@@ -156,7 +152,7 @@ const renderNoteList = async (notes) => {
 
   let noteListItems = [];
 
-  // Returns HTML element with or without a delete button
+  
   const createLi = (text, note, delBtn = true) => {
     const liEl = document.createElement('li');
     liEl.classList.add('list-group-item');
@@ -194,17 +190,17 @@ const renderNoteList = async (notes) => {
   }
 };
 
-// Gets notes from the db and renders them to the sidebar
+
 const getAndRenderNotes = () => getNotes().then(renderNoteList);
 
 if (window.location.pathname === '/notes') {
   saveNoteBtn.addEventListener('click', handleNoteSave);
   newNoteBtn.addEventListener('click', handleNewNoteView);
   clearBtn.addEventListener('click', () => {
-    activeNote = {};  // Clear the active note
-    noteTitle.value = '';  // Clear the title
-    noteText.value = '';   // Clear the text
-    renderActiveNote();  // Reset the active note view
+    activeNote = {};  
+    noteTitle.value = '';  
+    noteText.value = '';   
+    renderActiveNote();  
   });
   noteForm.addEventListener('input', handleRenderBtns);
   document.querySelector('.list-group').addEventListener('click', (e) => {
