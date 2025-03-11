@@ -48,15 +48,6 @@ if (!newNote.title || !newNote.text) {
 
 
 
-
-
-
-
-
-
-// teacher question on the api/notes
-
-
 router.delete('/notes/:id', (req, res) => {
     const noteId = req.params.id; 
 
